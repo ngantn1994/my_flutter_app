@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/screens/home_screen.dart';
+import 'package:my_flutter_app/screens/note_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/bmi': (context) => NoteScreen(),
+      },
     );
   }
 }
