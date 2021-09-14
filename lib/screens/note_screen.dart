@@ -101,8 +101,12 @@ class _NoteScreenState extends State<NoteScreen> {
     notes.forEach((note) {
       tiles.add(Dismissible(
         key: UniqueKey(),
-        onDismissed: (_) {
-          sharedPreferencesHelper.deleteNote(note.id).then((value) => updateScreen());
+        onDismissed: (direction) {
+          if (direction == DismissDirection.startToEnd) {
+            sharedPreferencesHelper.deleteNote(note.id).then((value) => updateScreen());
+          } else if (direction == DismissDirection.endToStart) {
+            updateScreen();
+          }
         },
         child: ListTile(
           title: Text(note.title),
