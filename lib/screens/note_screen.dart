@@ -104,6 +104,8 @@ class _NoteScreenState extends State<NoteScreen> {
         onDismissed: (direction) {
           if (direction == DismissDirection.startToEnd) {
             sharedPreferencesHelper.deleteNote(note.id).then((value) => updateScreen());
+            // Then show a snackbar.
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(note.title + ' deleted')));
           } else if (direction == DismissDirection.endToStart) {
             updateScreen();
           }
